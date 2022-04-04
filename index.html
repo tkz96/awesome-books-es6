@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Awesome Books by Talha</title>
+  </head>
+  <body onload="showBooks()">
+    <nav>
+      <a href="index.html">Awesome Books</a>
+
+      <ul>
+        <li class="nav-list">
+          <a href="#" onclick="showBookSection()">Book List</a>
+        </li>
+        <li class="nav-list">
+          <a href="#" onclick="showFormSection()">Add a book</a>
+        </li>
+        <li class="nav-list">
+          <a href="#" onclick="showContactSection()">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="showDate">date</div>
+    
+    <main>
+      <div class="container">
+        <div class="bookSection active">
+          <h1>Awesome Books</h1>
+          <div id="booksDiv"></div>
+        </div>
+
+        <div class="formSection">
+          <h1>Add a new book</h1>
+          <form action="/">
+            <input
+              type="text"
+              placeholder="Title"
+              name="title"
+              id="title"
+              required
+            /><br />
+            <input
+              type="text"
+              placeholder="Author"
+              name="author"
+              id="author"
+              required
+            /><br />
+            <button type="submit" id="addBook">Add</button>
+          </form>
+        </div>
+
+        <div class="contactSection">
+          <h1>Contact Us</h1>
+          <p>Do you have any questions or you just want to say "Hello"?</p>
+          <p>You can reach out to us!</p>
+          <ul>
+            <li>Our Email: mail@mail.com</li>
+            <li>Our Phone Number: 0043586534422</li>
+            <li>Our Address: Street name 22, 84503 City, Country</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Copyright Talha</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="show.js"></script>
+  </body>
+</html>
