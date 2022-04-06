@@ -13,7 +13,6 @@ addBookButton.addEventListener('click', (event) => {
   form.reset();
 });
 
-
 const generateListOfBooks = (books) => {
   let items = [];
 

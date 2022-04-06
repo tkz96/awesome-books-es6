@@ -1,4 +1,4 @@
-// eslint-disable max-len
+/* eslint-disable max-len */
 // these aren't really private,
 // but nor are they really useful to document
 
