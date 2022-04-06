@@ -15,8 +15,8 @@ addBookButton.addEventListener('click', (event) => {
 
 const generateListOfBooks = (books) => {
   let items = [];
-
-  for (const [i, book] of books.entries()) { //eslint-disable-line
+  const bks = books;
+  for (const [i, book] of bks.entries()) { //eslint-disable-line
     items.push(`
       <div class="bookDesc">
       <li>${book.title} by ${book.author}</li> <button data-bookidx="${i}" class="removeBtn">Remove</button>
@@ -65,6 +65,28 @@ const displayDateTime = () => {
   document.getElementById('show-date').innerHTML = date;
   setTimeout(displayDateTime, 1000);
 }
+
+const bs = document.querySelector('.bookSection');
+const fs = document.querySelector('.formSection');
+const cs = document.querySelector('.contactSection');
+
+document.getElementById('book-list-switch').addEventListener('click', () => {
+  bs.classList.add('active');
+  fs.classList.remove('active');
+  cs.classList.remove('active');
+});
+
+document.getElementById('add-book-switch').addEventListener('click', () => {
+  bs.classList.remove('active');
+  fs.classList.add('active');
+  cs.classList.remove('active');
+});
+
+document.getElementById('contact-switch').addEventListener('click', () => {
+  bs.classList.remove('active');
+  fs.classList.remove('active');
+  cs.classList.add('active');
+});
 
 displayDateTime();
 window.onload = showBooks()
