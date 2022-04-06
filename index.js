@@ -1,42 +1,70 @@
-/* eslint-disable no-unused-vars */
-import * as Declarations from './modules/declarations.js';
 import Book from './modules/book.js';
-const removeBtn = document.querySelectorAll('.removeBtn');
-console.log(removeBtn);
+import * as luxon from './modules/luxon.js';
 
-const obj = new Book();
+const bookObj = new Book();
 
-function generateListOfBooks(x) {
-  let items = '';
-  for (let i = 0; i < x.length; i += 1) {
-    items += `
+const addBookButton = document.getElementById('addBook');
+
+addBookButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  addBook();
+
+  const form = document.getElementById('book-add')
+  form.reset();
+});
+
+
+const generateListOfBooks = (books) => {
+  let items = [];
+
+  for (const [i, book] of books.entries()) {
+    items.push(`
       <div class="bookDesc">
-        <li>${x[i].title} by ${x[i].author}</li> <button class="removeBtn" data-id="${i}">Remove</button>
-      </div>
-    `;
+      <li>${book.title} by ${book.author}</li> <button data-bookidx="${i}" class="removeBtn">Remove</button>
+    </div>
+    `);
   }
-  return items;
+  return items.join('');
 }
 
-function showBooks() {
-  Declarations.myForm.reset();
-  Declarations.booksDiv.innerHTML = `
+const showBooks = () => {
+  const booksDiv = document.getElementById('booksDiv');
+
+  booksDiv.innerHTML = `
     <h3>All Awesome Books</h3>
-    <ul id="theBooks"> <br />
-      ${generateListOfBooks(obj.booksInLS)}</ul>
+    <ul id="theBooks">
+      ${generateListOfBooks(bookObj.booksInLS)}
+    </ul>
   `;
+
+  const btns = document.getElementsByClassName('removeBtn');
+
+  for (const btn of btns) {
+    btn.addEventListener('click', removeBook);
+  }
 }
 
-function addBook(title, author) {
-  obj.thisOneActuallyAddsTheBook(title, author);
+const addBook = () => {
+  const bookTitle = document.getElementById('title').value;
+  const bookAuthor = document.getElementById('author').value;
+  bookObj.add(bookTitle, bookAuthor);
+
   showBooks();
 }
 
-Declarations.addBookButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  addBook(Declarations.bookTitle.value, Declarations.bookAuthor.value);
-});
+const removeBook = (event)  => {
+  const bookId = event.target.dataset['bookidx'];
+  bookObj.remove(bookId);
 
-window.onload = showBooks();
+  showBooks();
+}
 
-/* eslint-enable no-unused-vars */
+const displayDateTime = () => {
+  const date = luxon.DateTime.now().toLocaleString(luxon.DateTime.DATETIME_SHORT_WITH_SECONDS);
+  
+  document.getElementById('show-date').innerHTML = date;
+  setTimeout(displayDateTime, 1000);
+}
+
+displayDateTime();
+window.onload = showBooks()

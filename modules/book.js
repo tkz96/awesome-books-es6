@@ -1,28 +1,19 @@
-import { bookTitle, bookAuthor } from './declarations.js';
-
-const booksInLS = ["hello"];
-
 export default class Book {
   constructor() {
-    if (localStorage.getItem('list of Books') === null) {
-      this.booksInLS = localStorage.setItem('list of Books', JSON.stringify([]));
+    if (localStorage.getItem('books') === null) {
+      this.booksInLS = localStorage.setItem('books', JSON.stringify([]));
     } else {
-      this.booksInLS = JSON.parse(localStorage.getItem('list of Books'));
+      this.booksInLS = JSON.parse(localStorage.getItem('books'));
     }
   }
 
-  thisOneActuallyAddsTheBook(bookTitle, bookAuthor) {
-    this.booksInLS.push({
-      title: bookTitle,
-      author: bookAuthor,
-    });
-    localStorage.setItem('list of Books', JSON.stringify(this.booksInLS));
+  add(title, author) {
+    this.booksInLS.push({title, author});
+    localStorage.setItem('books', JSON.stringify(this.booksInLS));
   }
 
-  thisOneActuallyRemovesTheBook(i) {
-    this.booksInLS.splice(i, 1);
-    localStorage.setItem('list of Books', JSON.stringify(this.booksInLS));
-
+  remove(bookIdx) {
+    this.booksInLS.splice(bookIdx, 1);
+    localStorage.setItem('books', JSON.stringify(this.booksInLS));
   }
-
 }
