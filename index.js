@@ -1,9 +1,5 @@
-/*eslint-disable import/extensions*/
-/*eslint-disable no-use-before-define*/
-/*eslint-disable no-restricted-syntax*/
-
-import Book from './modules/book.js';
-import * as luxon from './modules/luxon.js';
+import Book from './modules/book.js'; //eslint-disable-line
+import * as luxon from './modules/luxon.js'; //eslint-disable-line
 
 const bookObj = new Book();
 
@@ -11,7 +7,7 @@ const addBookButton = document.getElementById('addBook');
 
 addBookButton.addEventListener('click', (event) => {
   event.preventDefault();
-  addBook();
+  addBook(); //eslint-disable-line
 
   const form = document.getElementById('book-add')
   form.reset();
@@ -20,7 +16,7 @@ addBookButton.addEventListener('click', (event) => {
 const generateListOfBooks = (books) => {
   let items = [];
 
-  for (const [i, book] of books.entries()) {
+  for (const [i, book] of books.entries()) { //eslint-disable-line
     items.push(`
       <div class="bookDesc">
       <li>${book.title} by ${book.author}</li> <button data-bookidx="${i}" class="removeBtn">Remove</button>
@@ -42,7 +38,7 @@ const showBooks = () => {
 
   const btns = document.getElementsByClassName('removeBtn');
 
-  for (const btn of btns) {
+  for (const btn of btns) { //eslint-disable-line
     btn.addEventListener('click', removeBook);
   }
 }
@@ -55,7 +51,8 @@ const addBook = () => {
   showBooks();
 }
 
-const removeBook = (event)  => {
+const removeBook = (event)  => { //eslint-disable-line
+
   const bookId = event.target.dataset['bookidx'];
   bookObj.remove(bookId);
 
@@ -71,7 +68,3 @@ const displayDateTime = () => {
 
 displayDateTime();
 window.onload = showBooks()
-
-/*eslint-disable import/extensions*/
-/*eslint-disable no-use-before-define*/
-/*eslint-disable no-restricted-syntax*/
