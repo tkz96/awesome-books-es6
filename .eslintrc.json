@@ -11,6 +11,13 @@
   },
   "extends": ["airbnb-base"],
   "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "always"
+      }
+ ],
     "no-shadow": "off",
     "no-param-reassign": "off",
     "eol-last": "off"
