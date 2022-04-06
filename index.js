@@ -39,7 +39,7 @@ const showBooks = () => {
   const btns = document.getElementsByClassName('removeBtn');
 
   for (const btn of btns) { //eslint-disable-line
-    btn.addEventListener('click', removeBook);
+    btn.addEventListener('click', removeBook); //eslint-disable-line
   }
 }
 
