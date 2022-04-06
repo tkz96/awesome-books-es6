@@ -20,7 +20,7 @@ nav > ul {
   gap: 8px;
 }
 
-.showDate {
+#show-date {
   position: fixed;
   right: 0;
 }

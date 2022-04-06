@@ -7,25 +7,25 @@
     <link rel="stylesheet" href="styles.css" />
     <title>Awesome Books by Talha</title>
   </head>
-  <body onload="showBooks()">
+  <body>
     <nav>
       <a href="index.html">Awesome Books</a>
 
       <ul>
         <li class="nav-list">
-          <a href="#" onclick="showBookSection()">Book List</a>
+          <a href="#" id="book-list-switch">Book List</a>
         </li>
         <li class="nav-list">
-          <a href="#" onclick="showFormSection()">Add a book</a>
+          <a href="#" id="add-book-switch">Add a book</a>
         </li>
         <li class="nav-list">
-          <a href="#" onclick="showContactSection()">Contact</a>
+          <a href="#" id="contact-switch">Contact</a>
         </li>
       </ul>
     </nav>
 
-    <div class="showDate">date</div>
-    
+    <div id="show-date">showDate</div>
+
     <main>
       <div class="container">
         <div class="bookSection active">
@@ -35,7 +35,7 @@
 
         <div class="formSection">
           <h1>Add a new book</h1>
-          <form action="/">
+          <form id="book-add">
             <input
               type="text"
               placeholder="Title"
@@ -69,7 +69,6 @@
     <footer>
       <p>Copyright Talha</p>
     </footer>
-    <script src="script.js"></script>
-    <script src="show.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
