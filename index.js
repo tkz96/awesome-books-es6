@@ -1,3 +1,7 @@
+/*eslint-disable import/extensions*/
+/*eslint-disable no-use-before-define*/
+/*eslint-disable no-restricted-syntax*/
+
 import Book from './modules/book.js';
 import * as luxon from './modules/luxon.js';
 
@@ -67,3 +71,7 @@ const displayDateTime = () => {
 
 displayDateTime();
 window.onload = showBooks()
+
+/*eslint-disable import/extensions*/
+/*eslint-disable no-use-before-define*/
+/*eslint-disable no-restricted-syntax*/
